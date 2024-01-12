@@ -24,3 +24,4 @@ Route::get('/accounts/{list}/edit', [AccountController::class, 'edit'])->name('a
 Route::patch('/accounts/{list}', [AccountController::class, 'update'])->name('accounts.update');
 Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
 Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
