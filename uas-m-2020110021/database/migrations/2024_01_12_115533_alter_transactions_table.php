@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->char('id',16)->index();
-            $table->string('nama');
-            $table->string('jenis', 50);
-            $table->timestamps();
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('set null');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accounts');
+        Schema::table('transactions', function (Blueprint $table) {
+            //
+        });
     }
 };
