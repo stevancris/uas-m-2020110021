@@ -12,7 +12,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('transactions.index', compact('transaction'));
     }
 
     /**
@@ -20,7 +20,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**
@@ -28,7 +28,19 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'kategori' => 'required|string|min:3|max:50',
+            'nominal' => 'required|numeric',
+            'tujuan' => 'required|string',
+        ]);
+
+        $transaction = Transaction::create([
+           'kategori' => $validated['kategori'],
+           'nominal' => $validated['nominal'],
+           'tujuan' => $validated['tujuan'],
+        ]);
+
+        return redirect()->route('transactions.index')->with('success', 'Transaction added successfully.');
     }
 
     /**

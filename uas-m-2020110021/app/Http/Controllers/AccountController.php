@@ -12,7 +12,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        return view('accounts.index', compact('account'));
     }
 
     /**
@@ -20,7 +20,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('accounts.create');
     }
 
     /**
@@ -28,7 +28,18 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'jenis' => 'required|string|min:3|max:50',
+        ]);
+        // dump($validated);
+
+        $account = Account::create([
+           'nama' => $validated['nama'],
+           'jenis' => $validated['jenis'],
+        ]);
+
+        return redirect()->route('accounts.index')->with('success', 'Account added successfully.');
     }
 
     /**
@@ -36,7 +47,7 @@ class AccountController extends Controller
      */
     public function show(Account $account)
     {
-        //
+     return view('accounts.show', compact('account'));
     }
 
     /**
@@ -44,7 +55,7 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        //
+        return view('accounts.edit', compact('account'));
     }
 
     /**
@@ -52,7 +63,19 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'jenis' => 'required|string|min:3|max:50',
+        ]);
+        // dump($validated);
+
+        $account = Account::create([
+           'nama' => $validated['nama'],
+           'jenis' => $validated['jenis'],
+        ]);
+
+        return redirect()->route('accounts.index')->with('success', 'Account updated successfully.');
+
     }
 
     /**
