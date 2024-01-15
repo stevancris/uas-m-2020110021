@@ -14,4 +14,8 @@ class Transaction extends Model
         'nominal',
         'tujuan',
     ];
+
+    public function transaction() {
+        return $this->belongsTo(Transaction::class);
+    }
 }
