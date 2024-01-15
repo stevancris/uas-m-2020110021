@@ -12,7 +12,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('accounts.index', compact('account'));
+        $accounts = Account::all();
+        return view('accounts.index', compact('accounts'));
     }
 
     /**
@@ -29,12 +30,14 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'id' => 'required|integer',
             'nama' => 'required|string',
             'jenis' => 'required|string|min:3|max:50',
         ]);
         // dump($validated);
 
         $account = Account::create([
+           'id' => $validated['id'],
            'nama' => $validated['nama'],
            'jenis' => $validated['jenis'],
         ]);
@@ -64,12 +67,14 @@ class AccountController extends Controller
     public function update(Request $request, Account $account)
     {
         $validated = $request->validate([
+            'id' => 'required|integer',
             'nama' => 'required|string',
             'jenis' => 'required|string|min:3|max:50',
         ]);
         // dump($validated);
 
         $account = Account::create([
+           'id' => $validated['id'],
            'nama' => $validated['nama'],
            'jenis' => $validated['jenis'],
         ]);
