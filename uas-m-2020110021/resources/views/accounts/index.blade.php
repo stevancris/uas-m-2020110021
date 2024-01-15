@@ -31,7 +31,7 @@
                         <th scope="row">
                             {{ $account->id }}
                         </th>
-                        <td>{{ $account->nama }}"</td>
+                        <td>{{ $account->nama }}</td>
                         <td>{{ $account->jenis }}</td>
                         <td>{{ $account->created_at }}</td>
                         <td>{{ $account->updated_at }}</td>
