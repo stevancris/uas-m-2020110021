@@ -71,14 +71,12 @@ class AccountController extends Controller
             'nama' => 'required|string',
             'jenis' => 'required|string|min:3|max:50',
         ]);
-        // dump($validated);
 
-        $account = Account::create([
+        $account->update([
            'id' => $validated['id'],
            'nama' => $validated['nama'],
            'jenis' => $validated['jenis'],
         ]);
-
         return redirect()->route('accounts.index')->with('success', 'Account updated successfully.');
 
     }
