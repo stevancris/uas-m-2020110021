@@ -10,7 +10,13 @@ class Account extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nama',
         'jenis',
     ];
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
 }
