@@ -25,8 +25,8 @@
                     <label for="kategori">Kategori</label>
                     <select class="form-control" name="kategori" id="kategori" value="{{ old('kategori') }}">
                         <option value="">Choose</option>
-                        <option value="Personal">Personal</option>
-                        <option value="Bisnis">Bisnis</option>
+                        <option value="Income">Income</option>
+                        <option value="Expense">Expense</option>
                     </select>
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
@@ -39,7 +39,11 @@
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="account_id">Account ID</label>
-                    <input type="text" class="form-control" id="account_id" name="account_id" value="{{ old('account_id') }}">
+                    <select name="nama" id="nama">
+                        {{-- @foreach($account as $item)
+                            <option value="{{ $item->id }}">{{ $item->account_id }}</option>
+                        @endforeach --}}
+                </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Save</button>
             </form>
