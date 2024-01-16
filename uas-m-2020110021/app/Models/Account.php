@@ -14,9 +14,8 @@ class Account extends Model
         'nama',
         'jenis',
     ];
-    public function accounts()
+    public function transactions()
     {
-        return $this->hasMany(Account::class);
+        return $this->hasMany(Transaction::class);
     }
-
 }

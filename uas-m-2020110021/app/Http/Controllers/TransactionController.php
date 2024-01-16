@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Account;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -21,7 +22,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('transactions.create');
+        $accounts = Account::all();
+        return view('transactions.create', compact('accounts'));
     }
 
     /**

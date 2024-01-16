@@ -35,15 +35,19 @@
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="tujuan">Tujuan</label>
-                    <input type="text" class="form-control" id="tujuan" name="tujuan" value="{{ old('tujuan') }}">
+                    <select name="tujuan" id="tujuan">
+                       @foreach($accounts as $account)
+                            <option value="{{ $account->id }}">{{ $account->nama }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="account_id">Account ID</label>
-                    <select name="nama" id="nama">
-                        {{-- @foreach($account as $item)
-                            <option value="{{ $item->id }}">{{ $item->account_id }}</option>
-                        @endforeach --}}
-                </select>
+                    <select name="account_id" id="account_id">
+                       @foreach($accounts as $account)
+                            <option value="{{ $account->id }}">{{ $account->id }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Save</button>
             </form>

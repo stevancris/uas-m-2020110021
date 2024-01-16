@@ -33,7 +33,7 @@
                             {{ $transaction->id }}
                         </th>
                         <td>{{ $transaction->kategori }}</td>
-                        <td>{{ $transaction->nominal }}</td>
+                        <td>Rp. {{ $transaction->nominal }}</td>
                         <td>{{ $transaction->tujuan }}</td>
                         <td>{{ $transaction->account_id }}</td>
                         <td>{{ $transaction->created_at }}</td>
