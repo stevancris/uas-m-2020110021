@@ -24,17 +24,15 @@
                 @csrf
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="id" class="form-label">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
-                        value="{{ old('id', $account->id) }}">
+                    <input type="text" class="form-control" id="id" name="id" value="{{ old('id', $account->id) }}">
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama"
-                        value="{{ old('nama', $account->nama) }}">
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', $account->nama) }}">
                 </div>
                 <div class="mb-3 col-md-12 col-sm-12">
                     <label for="jenis">Jenis</label>
-                    <select class="form-control" name="jenis" id="jenis" value="{{ old('jenis') }}">
+                    <select class="form-control" name="jenis" id="jenis" value="{{ old('jenis', $account->jenis) }}">
                         <option value="">Choose</option>
                         <option value="Personal">Personal</option>
                         <option value="Bisnis">Bisnis</option>
