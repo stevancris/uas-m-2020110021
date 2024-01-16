@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Accounts and Transactions List')
+@section('title', 'Accounts and accounts List')
 
 @section('content')
     <div class="mt-4 p-5 bg-black text-white rounded">
-        <h1>All Transactions</h1>
+        <h1>All accounts</h1>
     </div>
 
     @if (session()->has('success'))
@@ -35,23 +35,23 @@
                     $incomeCount = 0;
                     $expenseCount = 0;
                 @endphp
-                @forelse ($transactions as $transaction)
+                @forelse ($accounts as $account)
                     <tr>
-                        <th scope="row">{{ $transaction->id }}</th>
+                        <th scope="row">{{ $account->id }}</th>
                         <td>
-                            <a href="{{ route('transactions.show', $transaction) }}">
-                                {{ $transaction->category }}</td>
+                            <a href="{{ route('accounts.show', $account) }}">
+                                {{ $account->category }}</td>
                             </a>
-                        <td>{{ $transaction->type }}</td>
-                        <td>{{ Str::limit($transaction->notes, 50, ' ...') }}</td>
-                        <td>{{ $transaction->amount }}</td>
-                        <td>{{ $transaction->created_at }}</td>
-                        <td>{{ $transaction->updated_at }}</td>
+                        <td>{{ $account->type }}</td>
+                        <td>{{ Str::limit($account->notes, 50, ' ...') }}</td>
+                        <td>{{ $account->amount }}</td>
+                        <td>{{ $account->created_at }}</td>
+                        <td>{{ $account->updated_at }}</td>
                         <td>
-                            <a href="{{ route('transactions.edit', $transaction) }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('accounts.edit', $account) }}" class="btn btn-primary btn-sm">
                                 Edit
                             </a>
-                            <form action="{{ route('transactions.destroy', $transaction) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route('accounts.destroy', $account) }}" method="POST" class="d-inline-block">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm"
@@ -61,13 +61,13 @@
                         </td>
                     </tr>
                     @php
-                        $totalAmount += $transaction->amount;
+                        $totalAmount += $account->amount;
 
-                        if ($transaction->type === 'Income') {
-                            $totalIncome += $transaction->amount;
+                        if ($account->type === 'Income') {
+                            $totalIncome += $account->amount;
                             $incomeCount++;
-                        } elseif ($transaction->type === 'Expense') {
-                            $totalExpense += $transaction->amount;
+                        } elseif ($account->type === 'Expense') {
+                            $totalExpense += $account->amount;
                             $expenseCount++;
                         }
                     @endphp
@@ -76,7 +76,7 @@
                     </tr> --}}
                 @empty
                     <tr>
-                        <td colspan="8">No transactions found.</td>
+                        <td colspan="8">No accounts found.</td>
                     </tr>
                 @endforelse
             </tbody>
@@ -110,8 +110,8 @@
         <p>Jumlah Transaksi Expense: {{ $expenseCount }}</p> --}}
     </table>
     <div class="mt-4 p-5 bg-black text-white rounded">
-        <h1>All Transactions</h1>
+        <h1>All accounts</h1>
         {{-- Add button --}}
-        <a href="{{ route('transactions.create') }}" class="btn btn-primary btn-sm">Create Transaction</a>
+        <a href="{{ route('accounts.create') }}" class="btn btn-primary btn-sm">Create account</a>
     </div>
 @endsection
